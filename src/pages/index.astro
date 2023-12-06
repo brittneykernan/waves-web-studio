@@ -18,7 +18,7 @@ const { description } = AppConfig;
 ---
 
 <Base head={{ title, description }}>
-  <Hero />
+  <Hero client:load />
   <ProjectList />
   <RecentPosts postList={lastThreePosts} />
   <CTA />
