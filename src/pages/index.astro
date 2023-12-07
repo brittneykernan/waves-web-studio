@@ -1,6 +1,7 @@
 ---
 import type { IFrontmatter } from 'astro-boilerplate-components';
 
+import Image from '@/components/Image.astro';
 import { CTA } from '@/partials/CTA';
 import { Hero } from '@/partials/Hero';
 import { ProjectList } from '@/partials/ProjectList';
@@ -15,11 +16,42 @@ const lastThreePosts = sortedPosts.slice(0, 3);
 
 const { title } = AppConfig;
 const { description } = AppConfig;
+
+const projects = [
+  {
+    href: '#',
+    title: 'Good Miles App',
+    src: 'good-miles-home.jpg',
+    alt: 'test',
+    description:
+      'Fitness App for easily tracking and celebrating miles walked in a day',
+  },
+  {
+    href: '#',
+    title: 'Now Departing NY',
+    src: 'now-departing-home.jpg',
+    alt: 'test',
+    description: 'Travel Blog for kinda budget concious bougie millenials',
+  },
+];
 ---
 
 <Base head={{ title, description }}>
   <Hero client:load />
-  <ProjectList />
+  <ProjectList>
+    {projects.map(
+      ({ alt, title: pTitle, src, description: pDescription, href }) => (
+        <a href={href} title={pTitle}>
+          <div class="rounded-xl">
+            <Image src={src} alt={alt} />
+          </div>
+          <h3>{pTitle}</h3>
+          <p>{pDescription}</p>
+        </a>
+      )
+    )}
+  </ProjectList>
+
   <RecentPosts postList={lastThreePosts} />
   <CTA />
 </Base>

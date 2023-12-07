@@ -43,6 +43,13 @@ const Hero = () => {
       );
     }, gsapCtx);
 
+    gsap.to('.staggered', {
+      opacity: 1,
+      stagger: 0.1,
+      delay: 1.3,
+      ease: 'power2.in',
+    });
+
     return () => {
       ctx.revert();
       splitTypeInstance.revert();
@@ -61,11 +68,11 @@ const Hero = () => {
       >
         Web Design & Development Studio
       </h1>
-      <h2 className="w-[610px] pb-10 text-xl leading-6 tracking-tighter md:text-3xl xl:w-[730px] xl:text-4xl">
+      <h2 className="staggered w-[610px] pb-10 text-xl leading-6 tracking-tighter opacity-0 md:text-3xl xl:w-[730px] xl:text-4xl">
         A Brooklyn-based studio specializing in front-end services for startups
         and small businesses.
       </h2>
-      <button className="self-start rounded-full border border-current px-8 py-4 text-lg">
+      <button className="staggered self-start rounded-full border border-current px-8 py-4 text-lg opacity-0">
         {email}
       </button>
     </section>

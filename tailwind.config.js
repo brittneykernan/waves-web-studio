@@ -5,7 +5,11 @@ module.exports = {
     './node_modules/astro-boilerplate-components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        85: '85vh',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
