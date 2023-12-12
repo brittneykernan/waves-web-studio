@@ -1,6 +1,6 @@
 <a
   href='#'
-  class='button staggered relative self-start overflow-hidden rounded-full px-8 py-4 text-lg opacity-0'
+  class='fadeUpIn button relative self-start overflow-hidden rounded-full px-8 py-4 text-lg'
 >
   <span class='button__flair'></span>
   <span class='button__label'><slot></slot></span>
@@ -48,7 +48,7 @@
     color: white;
   }
   .button:hover .button__label {
-    transition: color 0.15s var(--ease-in-out-quart);
+    transition: color 0.4s var(--ease-in-out-quart);
   }
 
   .button__flair:before {
@@ -62,7 +62,7 @@
     position: absolute;
     top: 0;
     transform: translate(-50%, -50%);
-    width: 170%;
+    width: 185%;
   }
 </style>
 
@@ -73,7 +73,7 @@
   const buttonWidth = button.offsetWidth;
   const buttonHeight = button.offsetHeight;
 
-  const animationDuration = 250;
+  const animationDuration = 400;
 
   let lastScale = 0;
   let lastPercentageX = 0;
@@ -100,6 +100,9 @@
     }
 
     const scaleAnimationProgress = timeElapsed / animationDuration;
+
+    // todo: change this function to return the diff since last scale size
+    // so the animation doesn't jump to scale(1) on exit
     const newScale = -(Math.cos(Math.PI * scaleAnimationProgress) - 1) / 2;
 
     lastScale = isHovering ? newScale : 1 - newScale;

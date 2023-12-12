@@ -1,8 +1,9 @@
 ---
 import type { IFrontmatter } from 'astro-boilerplate-components';
 
+import projects from '@/data/projects';
 import { CTA } from '@/partials/CTA';
-import FlairButton from '@/partials/FlairButton.astro';
+import WaveButton from '@/partials/WaveButton.astro';
 import { Hero } from '@/partials/Hero';
 import Image from '@/partials/Image.astro';
 import { ProjectList } from '@/partials/ProjectList';
@@ -15,25 +16,7 @@ const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
 const sortedPosts = sortByDate(allPosts);
 const lastThreePosts = sortedPosts.slice(0, 3);
 
-const { email, description, title } = AppConfig;
-
-const projects = [
-  {
-    href: '#',
-    title: 'Good Miles App',
-    src: 'good-miles-home.jpg',
-    alt: 'test',
-    description:
-      'Fitness App for easily tracking and celebrating miles walked in a day',
-  },
-  {
-    href: '#',
-    title: 'Now Departing NY',
-    src: 'now-departing-home.jpg',
-    alt: 'test',
-    description: 'Travel Blog for somewhat-budget-concious bougie millenials',
-  },
-];
+const { description, title } = AppConfig;
 ---
 
 <Base head={{ title, description }}>
@@ -44,15 +27,19 @@ const projects = [
       A Brooklyn-based studio specializing in front-end services for startups
       and small businesses.
     </h2>
-    <FlairButton>
-      {email}
-    </FlairButton>
+    <WaveButton>
+      Let's Chat
+    </WaveButton>
   </Hero>
-  <ProjectList>
+  <ProjectList client:load>
     {projects.map(
       ({ alt, title: pTitle, src, description: pDescription, href }) => (
-        <a href={href} title={pTitle} class="flex flex-col gap-2">
-          <div class="overflow-hidden rounded-xl">
+        <a
+          href={href}
+          title={pTitle}
+          class="fadeUpIn flex flex-col gap-2 opacity-0"
+        >
+          <div class=" overflow-hidden rounded-xl">
             <Image
               src={src}
               alt={alt}
@@ -71,3 +58,22 @@ const projects = [
   <RecentPosts postList={lastThreePosts} />
   <CTA />
 </Base>
+
+<script>
+import { customEase } from "@/utils/Animation";
+import gsap from "gsap";
+
+const getY = (index) => {
+  return 25*(index+1)
+}
+
+    gsap.from('.fadeUpIn', {
+      opacity: 0,
+      y: getY,
+      stagger: 0.1,
+      duration: 1.5,
+      ease: customEase,
+      delay: 1.2,
+    });
+
+</script>

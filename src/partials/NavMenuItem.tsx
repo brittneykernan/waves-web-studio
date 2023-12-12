@@ -7,11 +7,7 @@ type INavMenuItemProps = {
 
 const NavMenuItem = (props: INavMenuItemProps) => (
   <li>
-    <a
-      href={props.href}
-      target={props.target || '_self'}
-      className="staggered opacity-0"
-    >
+    <a href={props.href} target={props.target || '_self'}>
       {props.children}
       {props.lastItem ? '' : ', '}
     </a>

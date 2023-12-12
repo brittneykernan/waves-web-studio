@@ -9,31 +9,22 @@ import { AppConfig } from '@/utils/AppConfig';
 const { email } = AppConfig;
 
 const Navbar = () => {
-  const gsapCtx = useRef<HTMLElement>(null); // create a ref for the root level element (for scoping)
+  const header = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to('.staggered', {
-        opacity: 1,
-        stagger: 0.1,
-        delay: 1,
-        ease: 'power2.in',
-      });
-    }, gsapCtx);
-
-    return () => ctx.revert();
+    gsap.to(header.current!, {
+      opacity: 1,
+      delay: 1,
+      ease: 'power2.in',
+    });
   }, []);
 
   return (
     <header
-      ref={gsapCtx}
-      className="flex h-16 w-11/12 flex-row items-center justify-between gap-y-3 text-lg md:h-24"
+      ref={header}
+      className="flex h-16 w-11/12 flex-row items-center justify-between gap-y-3 text-lg opacity-0 md:h-24"
     >
-      <a
-        href="/"
-        title="Waves Web Studio Homepage"
-        className="staggered opacity-0"
-      >
+      <a href="/" title="Waves Web Studio Homepage">
         <div className="h-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +52,7 @@ const Navbar = () => {
       <a
         href={`mailto:${email}`}
         title={`Email ${email}`}
-        className="staggered hidden opacity-0 md:flex"
+        className="hidden md:flex"
         rel="noopener nofollow"
         target="_blank"
       >

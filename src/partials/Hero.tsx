@@ -22,6 +22,8 @@ const Hero = (props: LayoutProps) => {
       });
       const { lines } = splitTypeInstance;
 
+      // todo: see of splitting in html
+      // saves on load time, it's so slow
       lines?.forEach((line) => {
         const wrapper = document.createElement('div');
         wrapper.append(line);
@@ -47,7 +49,7 @@ const Hero = (props: LayoutProps) => {
 
     gsap.to('.staggered', {
       opacity: 1,
-      stagger: 0.1,
+      stagger: 0.2,
       delay: 1.3,
       ease: 'power2.in',
     });

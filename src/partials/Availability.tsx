@@ -3,7 +3,7 @@ type IAvailabilityProps = {
 };
 
 const Availability = (props: IAvailabilityProps) => (
-  <div className="staggered hidden opacity-0 lg:flex">
+  <div className="hidden lg:flex">
     <h3>{props.children}</h3>
   </div>
 );
