@@ -1,0 +1,143 @@
+<a
+  href='#'
+  class='button staggered relative self-start overflow-hidden rounded-full px-8 py-4 text-lg opacity-0'
+>
+  <span class='button__flair'></span>
+  <span class='button__label'><slot></slot></span>
+</a>
+
+<style>
+  .button {
+    --ease-in-out-quart: cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .button__flair {
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    transform: scale(0);
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .button__label {
+    position: relative;
+    text-align: center;
+    transition: color 50ms var(--ease-in-out-quart);
+    pointer-events: none;
+  }
+
+  .button:after {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    border: 0.125rem solid black;
+    border-radius: 6.25rem;
+    content: '';
+    pointer-events: none;
+  }
+
+  .button:hover {
+    color: white;
+  }
+  .button:hover .button__label {
+    transition: color 0.15s var(--ease-in-out-quart);
+  }
+
+  .button__flair:before {
+    aspect-ratio: 1;
+    background: black;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -50%);
+    width: 170%;
+  }
+</style>
+
+<script type='text/javascript'>
+  const button = document.querySelector('.button');
+  const buttonFlair = document.querySelector('.button__flair');
+
+  const buttonWidth = button.offsetWidth;
+  const buttonHeight = button.offsetHeight;
+
+  const animationDuration = 250;
+
+  let lastScale = 0;
+  let lastPercentageX = 0;
+  let lastPercentageY = 0;
+
+  let animationStartTime = null;
+  let isHovering = false;
+  let startScaleAnimation = false;
+
+  const setMousePosition = (e) => {
+    let x = e.clientX - e.target.offsetLeft;
+    let y = e.clientY - e.target.offsetTop;
+
+    const percentageX = ((x / buttonWidth) * 100).toFixed(2) + '%';
+    const percentageY = ((y / buttonHeight) * 100).toFixed(2) + '%';
+
+    lastPercentageX = percentageX;
+    lastPercentageY = percentageY;
+  };
+
+  const setScale = (timeElapsed) => {
+    if (timeElapsed > animationDuration) {
+      return (lastScale = isHovering ? 1 : 0);
+    }
+
+    const scaleAnimationProgress = timeElapsed / animationDuration;
+    const newScale = -(Math.cos(Math.PI * scaleAnimationProgress) - 1) / 2;
+
+    lastScale = isHovering ? newScale : 1 - newScale;
+  };
+
+  const animateFlair = (now) => {
+    if (startScaleAnimation) {
+      animationStartTime = now;
+      startScaleAnimation = false;
+    }
+
+    const timeElapsed = now - animationStartTime;
+    const isScaling = timeElapsed <= animationDuration;
+
+    setScale(timeElapsed);
+
+    buttonFlair.style.transform = `translate(${lastPercentageX},${lastPercentageY}) translate3D(0,0,0) scale(${lastScale})`;
+
+    if (isHovering || isScaling) {
+      requestAnimationFrame(animateFlair);
+    }
+  };
+
+  button.addEventListener('mouseenter', (e) => {
+    startScaleAnimation = true;
+    isHovering = true;
+
+    setMousePosition(e);
+
+    requestAnimationFrame(animateFlair);
+  });
+
+  button.addEventListener('mousemove', (e) => {
+    setMousePosition(e);
+  });
+
+  button.addEventListener('mouseout', () => {
+    startScaleAnimation = true;
+    isHovering = false;
+  });
+</script>

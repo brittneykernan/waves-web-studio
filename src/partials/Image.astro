@@ -4,9 +4,11 @@ import { Image } from 'astro:assets';
 interface Props {
   alt: string;
   src: string;
+  className: string;
 }
 
-const { alt, src } = Astro.props;
+const { alt, src, className } = Astro.props;
+
 const images = import.meta.glob('/src/images/*.{jpeg,jpg,png,gif}', {
   import: 'default',
 });
@@ -15,5 +17,4 @@ const imagePath = `/src/images/${src}`;
 const imageSrc = await images[imagePath || defaultImage]();
 ---
 
-<!-- <Image src={imageSrc} alt={alt} /> -->
-<Image src={imageSrc} alt={alt} />
+<Image src={imageSrc} alt={alt} class={className} />

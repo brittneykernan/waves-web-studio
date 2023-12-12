@@ -3,11 +3,13 @@ import { useEffect, useRef } from 'react';
 import SplitType from 'split-type';
 
 import { customEase } from '@/utils/Animation';
-import { AppConfig } from '@/utils/AppConfig';
 
-const { email } = AppConfig;
+export interface LayoutProps {
+  children: React.ReactNode;
+}
 
-const Hero = () => {
+const Hero = (props: LayoutProps) => {
+  const { children } = props;
   const gsapCtx = useRef<HTMLElement>(null); // create a ref for the root level element (for scoping)
   const h1 = useRef<HTMLHeadingElement>(null); // create
 
@@ -68,13 +70,7 @@ const Hero = () => {
       >
         Web Design & Development Studio
       </h1>
-      <h2 className="staggered w-[610px] pb-10 text-xl leading-6 tracking-tighter opacity-0 md:text-3xl xl:w-[730px] xl:text-4xl">
-        A Brooklyn-based studio specializing in front-end services for startups
-        and small businesses.
-      </h2>
-      <button className="staggered self-start rounded-full border border-current px-8 py-4 text-lg opacity-0">
-        {email}
-      </button>
+      {children}
     </section>
   );
 };
