@@ -1,6 +1,6 @@
 <a
   href='#'
-  class='fadeUpIn relative self-start overflow-hidden rounded-full border-2 border-black px-8 py-4 text-lg'
+  class='fadeUpIn relative self-start overflow-hidden rounded-full border-2 border-black px-4 py-2 text-lg'
   ><slot></slot>
 </a>
 
@@ -13,13 +13,9 @@
     background-clip: border-box;
     background-size: 200% 200%;
     background-position-x: 0;
-    background-position-y: 64px;
-    -webkit-transition: background-position-y 0.75s
-        cubic-bezier(0.645, 0.045, 0.355, 1),
+    background-position-y: 48px;
+    transition: background-position-y 1s cubic-bezier(0.645, 0.045, 0.355, 1),
       color 0.4s 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transition: background-position-y 0.75s cubic-bezier(0.645, 0.045, 0.355, 1),
-      color 0.4s 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-    -webkit-animation: waveAnimation 2s infinite linear;
     animation: waveAnimation 2s infinite linear;
   }
   a:hover {

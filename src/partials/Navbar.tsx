@@ -21,7 +21,8 @@ const Navbar = () => {
   return (
     <header
       ref={header}
-      className="flex h-16 w-11/12 flex-row items-center justify-between gap-y-3 text-lg opacity-0 md:h-24"
+      className="flex
+      h-16 w-11/12 flex-row-reverse items-center justify-between gap-y-3 text-lg opacity-0 md:h-24 md:flex-row"
     >
       <NavMenu>
         <NavMenuItem href="/#services">Services</NavMenuItem>
@@ -29,7 +30,7 @@ const Navbar = () => {
         <NavMenuItem href="/#team">Team</NavMenuItem>
       </NavMenu>
 
-      <a href="/" title="Waves Web Studio Homepage">
+      <a href="/" title="Waves Web Studio Homepage" className="md:w-1/3">
         <div className="h-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +47,7 @@ const Navbar = () => {
 
       <a
         href={schedulerLink}
-        className="link-hover-animation hidden md:flex"
+        className="link-hover-animation hidden w-1/3 justify-end md:flex"
         rel="noopener nofollow"
         target="_blank"
       >

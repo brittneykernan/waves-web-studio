@@ -25,7 +25,7 @@ const { description, title } = AppConfig;
 <Base head={{ title, description }}>
   <Hero client:load>
     <h2
-      class='staggered w-[610px] pb-10 text-xl leading-6 tracking-tighter opacity-0 md:text-3xl xl:w-[730px] xl:text-4xl'
+      class='staggered pb-10 text-xl leading-6 tracking-tighter opacity-0 md:w-[610px] md:text-3xl xl:w-[730px] xl:text-4xl'
     >
       A Brooklyn-based studio specializing in front-end services for startups
       and small businesses.
@@ -42,11 +42,11 @@ const { description, title } = AppConfig;
           title={pTitle}
           class="fadeUpInOnScroll flex translate-y-10 flex-col gap-2 opacity-0"
         >
-          <div class=" overflow-hidden rounded-xl">
+          <div class="h-85 overflow-hidden rounded-xl">
             <Image
               src={src}
               alt={alt}
-              className="transition-transform duration-700 hover:scale-125"
+              className="transition-transform duration-700 hover:scale-110"
             />
           </div>
           <div class="mb-12 mt-2 flex text-lg md:pb-20">
