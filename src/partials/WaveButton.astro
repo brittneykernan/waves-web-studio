@@ -1,39 +1,41 @@
 <a
   href='#'
-  class='fadeUpIn relative self-start overflow-hidden rounded-full px-8 py-4 text-lg border border-2 border-black border-size-2'
-><slot></slot>
+  class='fadeUpIn relative self-start overflow-hidden rounded-full border-2 border-black px-8 py-4 text-lg'
+  ><slot></slot>
 </a>
 
 <style>
-a {
-  background: url(/assets/images/wave.svg) repeat-x #fff;
-  background-position-x: 0%;
-  background-position-y: 0%;
-  background-size: auto;
-  background-clip: border-box;
-  background-size: 200% 200%;
-  background-position-x: 0;
-  background-position-y: 64px;
-  -webkit-transition: background-position-y 1s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.4s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: background-position-y 1s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.4s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -webkit-animation: waveAnimation 2s infinite linear;
-  animation: waveAnimation 2s infinite linear;
-}
-
-a:hover {
-  color: white;
-  background-position-x: 0;
-  background-position-y: 62%;
-  -webkit-animation-play-state: running;
-  animation-play-state: running;
-}
-
-@keyframes waveAnimation {
-  from {
+  a {
+    background: url(/assets/images/wave.svg) repeat-x #fff;
     background-position-x: 0%;
+    background-position-y: 0%;
+    background-size: auto;
+    background-clip: border-box;
+    background-size: 200% 200%;
+    background-position-x: 0;
+    background-position-y: 64px;
+    -webkit-transition: background-position-y 0.75s
+        cubic-bezier(0.645, 0.045, 0.355, 1),
+      color 0.4s 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: background-position-y 0.75s cubic-bezier(0.645, 0.045, 0.355, 1),
+      color 0.4s 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-animation: waveAnimation 2s infinite linear;
+    animation: waveAnimation 2s infinite linear;
   }
-  to {
-    background-position-x: 200%;
+  a:hover {
+    color: white;
+    background-position-x: 0;
+    background-position-y: 62%;
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
   }
-}
+
+  @keyframes waveAnimation {
+    from {
+      background-position-x: 0%;
+    }
+    to {
+      background-position-x: 200%;
+    }
+  }
 </style>

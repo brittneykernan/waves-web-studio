@@ -2,7 +2,7 @@ const Projects = [
   {
     href: '#',
     title: 'Good Miles App',
-    src: 'good-miles-home.jpg',
+    src: 'waves.jpg',
     alt: 'test',
     description:
       'Fitness App for easily tracking and celebrating miles walked in a day',

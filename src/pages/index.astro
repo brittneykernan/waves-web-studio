@@ -1,13 +1,16 @@
 ---
+import '@/styles/tailwind.css';
+
 import type { IFrontmatter } from 'astro-boilerplate-components';
 
 import projects from '@/data/projects';
+import { Availability } from '@/partials/Availability';
 import { CTA } from '@/partials/CTA';
-import WaveButton from '@/partials/WaveButton.astro';
 import { Hero } from '@/partials/Hero';
 import Image from '@/partials/Image.astro';
 import { ProjectList } from '@/partials/ProjectList';
 import { RecentPosts } from '@/partials/RecentPosts';
+import WaveButton from '@/partials/WaveButton.astro';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
 import { sortByDate } from '@/utils/Posts';
@@ -27,9 +30,9 @@ const { description, title } = AppConfig;
       A Brooklyn-based studio specializing in front-end services for startups
       and small businesses.
     </h2>
-    <WaveButton>
-      Let's Chat
-    </WaveButton>
+    <WaveButton>Get In Touch</WaveButton>
+
+    <Availability>Booking projects for Jan 2024</Availability>
   </Hero>
   <ProjectList client:load>
     {projects.map(
@@ -37,7 +40,7 @@ const { description, title } = AppConfig;
         <a
           href={href}
           title={pTitle}
-          class="fadeUpIn flex flex-col gap-2 opacity-0"
+          class="fadeUpInOnScroll flex translate-y-10 flex-col gap-2 opacity-0"
         >
           <div class=" overflow-hidden rounded-xl">
             <Image
@@ -60,20 +63,40 @@ const { description, title } = AppConfig;
 </Base>
 
 <script>
-import { customEase } from "@/utils/Animation";
-import gsap from "gsap";
+  import { customEase } from '@/utils/Animation';
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
-const getY = (index) => {
-  return 25*(index+1)
-}
+  const boxes = gsap.utils.toArray('.fadeUpInOnScroll');
 
-    gsap.from('.fadeUpIn', {
-      opacity: 0,
-      y: getY,
-      stagger: 0.1,
-      duration: 1.5,
+  gsap.registerPlugin(ScrollTrigger);
+
+  const getY = (index: number) => {
+    return 25 * (index + 1);
+  };
+
+  const timeline = gsap.timeline();
+
+  timeline.from('.fadeUpIn', {
+    opacity: 0,
+    y: getY,
+    stagger: 0.1,
+    duration: 1.5,
+    ease: customEase,
+    delay: 1.2,
+  });
+
+  //const initializeScrollAnimations = () => {
+  boxes.forEach((box) => {
+    timeline.to(box, {
+      opacity: 1,
+      y: 0,
       ease: customEase,
-      delay: 1.2,
+      duration: 1,
+      scrollTrigger: {
+        trigger: box,
+      },
     });
-
+  });
+  //};
 </script>

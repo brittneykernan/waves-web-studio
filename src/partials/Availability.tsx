@@ -3,9 +3,7 @@ type IAvailabilityProps = {
 };
 
 const Availability = (props: IAvailabilityProps) => (
-  <div className="hidden lg:flex">
-    <h3>{props.children}</h3>
-  </div>
+  <span className="right-rail-message hidden lg:flex">{props.children}</span>
 );
 
 export { Availability };

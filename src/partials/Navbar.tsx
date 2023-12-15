@@ -1,12 +1,11 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 
-import { Availability } from '@/partials/Availability';
 import { NavMenu } from '@/partials/NavMenu';
 import { NavMenuItem } from '@/partials/NavMenuItem';
 import { AppConfig } from '@/utils/AppConfig';
 
-const { email } = AppConfig;
+const { schedulerLink } = AppConfig;
 
 const Navbar = () => {
   const header = useRef<HTMLElement>(null);
@@ -24,6 +23,12 @@ const Navbar = () => {
       ref={header}
       className="flex h-16 w-11/12 flex-row items-center justify-between gap-y-3 text-lg opacity-0 md:h-24"
     >
+      <NavMenu>
+        <NavMenuItem href="/#services">Services</NavMenuItem>
+        <NavMenuItem href="/#clients">Clients</NavMenuItem>
+        <NavMenuItem href="/#team">Team</NavMenuItem>
+      </NavMenu>
+
       <a href="/" title="Waves Web Studio Homepage">
         <div className="h-6">
           <svg
@@ -39,24 +44,13 @@ const Navbar = () => {
         </div>
       </a>
 
-      <Availability>Booking projects for Jan 2024</Availability>
-
-      <NavMenu>
-        <NavMenuItem href="/#services">Services</NavMenuItem>
-        <NavMenuItem href="/#clients">Clients</NavMenuItem>
-        <NavMenuItem href="/#team" lastItem={true}>
-          Team
-        </NavMenuItem>
-      </NavMenu>
-
       <a
-        href={`mailto:${email}`}
-        title={`Email ${email}`}
-        className="hidden md:flex"
+        href={schedulerLink}
+        className="link-hover-animation hidden md:flex"
         rel="noopener nofollow"
         target="_blank"
       >
-        hello@wavesweb.studio
+        Schedule a Call
       </a>
     </header>
   );
