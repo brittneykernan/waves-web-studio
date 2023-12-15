@@ -36,7 +36,7 @@ const ProjectList = (props: IProjectListProps) => {
       // ref={container}
     >
       <h2 className="fadeUpIn flex justify-between pb-4 text-lg">
-        Recent Releases<p>↓</p>
+        Recent Work<p className="mr-[-2px]">↓</p>
       </h2>
       {props.children}
     </section>

@@ -10,7 +10,7 @@ const Projects = [
   {
     href: '#',
     title: 'Now Departing NY',
-    src: 'now-departing-home.jpg',
+    src: 'waves-2.jpg',
     alt: 'test',
     description: 'Travel Blog for somewhat-budget-concious bougie millenials',
   },

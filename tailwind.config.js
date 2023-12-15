@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        // teal: '#0087ca',
+      },
       height: {
         85: '85vh',
       },

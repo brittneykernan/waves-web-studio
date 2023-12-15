@@ -29,15 +29,15 @@ const {
     <link rel='icon' type='image/x-icon' href='/favicon.ico' />
     <style>
       body {
-        font-family: "Inter", sans-serif;
+        font-family: 'Inter', sans-serif;
       }
     </style>
   </head>
-  <body class="flex flex-col items-center gap-2">
-      <Navbar client:load />
-
+  <body class='flex flex-col items-center bg-white'>
+    <Navbar client:load />
+    <main class='mt-24 flex flex-col items-center gap-2'>
       <slot></slot>
-
-      <Footer />
-   </body>
+    </main>
+    <Footer />
+  </body>
 </html>
