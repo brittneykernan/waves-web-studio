@@ -1,0 +1,7 @@
+.right-rail-message {
+  position: absolute;
+  right: 0;
+  top: calc(30%);
+  rotate: -90deg;
+  transform-origin: right center;
+}

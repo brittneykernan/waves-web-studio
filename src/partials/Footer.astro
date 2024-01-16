@@ -1,0 +1,38 @@
+---
+import Image from '@/partials/Image.astro';
+import { RightRailMessage } from '@/partials/RightRailMessage';
+import WaveButton from '@/partials/WaveButton';
+---
+
+<footer class='relative w-11/12'>
+  <div
+    style='min-height: calc(100vh - 96px - 128px)'
+    class='flex h-max flex-col justify-center gap-2'
+  >
+    <h3
+      class='pb-2 text-4xl font-bold uppercase tracking-tighter md:text-7xl xl:pb-6 xl:text-8xl'
+    >
+      Let's Make Waves
+    </h3>
+    <p
+      class='pb-3 text-xl leading-6 tracking-tighter md:w-[610px] md:text-3xl xl:w-[730px] xl:text-4xl'
+    >
+      Focus your expertise on your business. Partner with a web expert on your
+      website goals.
+    </p>
+    <p
+      class='pb-6 text-xl leading-6 tracking-tighter md:w-[610px] md:pb-10 md:text-3xl xl:w-[730px] xl:text-4xl'
+    >
+      Send us an email now.
+    </p>
+    <WaveButton>hello@wavesweb.studio</WaveButton>
+    <RightRailMessage>Established in 2023</RightRailMessage>
+  </div>
+  <div class='my-9 flex flex-row items-end'>
+    <div class='w-1/3'>
+      <Image className='h-14 w-14' src='made-in-ny.gif' alt='Made In Ny' />
+    </div>
+    <button class='w-1/3 text-4xl'>↑</button>
+    <p class='w-1/3 text-right'>Copyright &copy; Waves Web Studio, LLC 2024</p>
+  </div>
+</footer>

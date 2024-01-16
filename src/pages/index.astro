@@ -1,23 +1,14 @@
 ---
 import '@/styles/tailwind.css';
 
-import type { IFrontmatter } from 'astro-boilerplate-components';
-
 import projects from '@/data/projects';
-import { Availability } from '@/partials/Availability';
-import { CTA } from '@/partials/CTA';
 import { Hero } from '@/partials/Hero';
 import Image from '@/partials/Image.astro';
 import { ProjectList } from '@/partials/ProjectList';
-import { RecentPosts } from '@/partials/RecentPosts';
-import WaveButton from '@/partials/WaveButton.astro';
+import { RightRailMessage } from '@/partials/RightRailMessage';
+import WaveButton from '@/partials/WaveButton';
 import Base from '@/templates/Base.astro';
 import { AppConfig } from '@/utils/AppConfig';
-import { sortByDate } from '@/utils/Posts';
-
-const allPosts = await Astro.glob<IFrontmatter>('./posts/*.md');
-const sortedPosts = sortByDate(allPosts);
-const lastThreePosts = sortedPosts.slice(0, 3);
 
 const { description, title } = AppConfig;
 ---
@@ -27,12 +18,12 @@ const { description, title } = AppConfig;
     <h2
       class='staggered pb-10 text-xl leading-6 tracking-tighter opacity-0 md:w-[610px] md:text-3xl xl:w-[730px] xl:text-4xl'
     >
-      A Brooklyn-based studio specializing in front-end services for startups
+      A Brooklyn-based studio specializing in web and app services for startups
       and small businesses.
     </h2>
     <WaveButton>Get In Touch</WaveButton>
 
-    <Availability>Booking projects for Jan 2024</Availability>
+    <RightRailMessage>Booking projects for Jan 2024</RightRailMessage>
   </Hero>
   <ProjectList client:load>
     {projects.map(
@@ -57,9 +48,6 @@ const { description, title } = AppConfig;
       )
     )}
   </ProjectList>
-
-  <RecentPosts postList={lastThreePosts} />
-  <CTA />
 </Base>
 
 <script>
@@ -86,7 +74,6 @@ const { description, title } = AppConfig;
     delay: 1.2,
   });
 
-  //const initializeScrollAnimations = () => {
   boxes.forEach((box) => {
     timeline.to(box, {
       opacity: 1,
@@ -98,5 +85,4 @@ const { description, title } = AppConfig;
       },
     });
   });
-  //};
 </script>

@@ -62,7 +62,7 @@ const Hero = (props: LayoutProps) => {
 
   return (
     <section
-      className="flex w-11/12 flex-col gap-2 pb-32 md:pb-48"
+      className="relative flex w-11/12 flex-col gap-2 pb-32 md:pb-48"
       ref={gsapCtx}
     >
       <h1

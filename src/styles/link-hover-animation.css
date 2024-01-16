@@ -1,0 +1,31 @@
+.link-hover-animation {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+.link-hover-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  border-radius: 5px;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, rgba(0,209,177,1) 0%,rgba(39,143,198,1) 98%);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  filter: invert(1); /* necessary to undo inverse colors applied by mix-blend-difference */
+}
+.link-hover-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.link-hover-animation.persistent-underline:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.link-hover-animation.persistent-underline:hover::after {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}

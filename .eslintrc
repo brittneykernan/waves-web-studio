@@ -152,7 +152,7 @@
         "tailwindcss/no-custom-classname": [
           1,
           {
-            "whitelist": ["fadeInUp", "fadeUpInOnScroll", "staggered"]
+            "whitelist": ["fadeUpIn", "fadeUpInOnScroll", "staggered"]
           }
         ], // whitelist for classes to not complain about
         "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
