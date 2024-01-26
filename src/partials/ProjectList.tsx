@@ -32,7 +32,7 @@ const ProjectList = (props: IProjectListProps) => {
 
   return (
     <section
-      className="flex w-11/12 flex-col gap-2 pb-32 md:pb-48"
+      className="flex flex-col gap-2 pb-32 md:pb-48"
       // ref={container}
     >
       <h2 className="fadeUpIn flex justify-between pb-4 text-lg">
@@ -43,4 +43,4 @@ const ProjectList = (props: IProjectListProps) => {
   );
 };
 
-export { ProjectList };
+export default ProjectList;

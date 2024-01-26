@@ -10,4 +10,4 @@ const NavMenu = (props: INavMenuProps) => (
   </nav>
 );
 
-export { NavMenu };
+export default NavMenu;

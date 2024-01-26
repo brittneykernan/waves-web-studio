@@ -16,4 +16,4 @@ const NavMenuItem = (props: INavMenuItemProps) => (
   </li>
 );
 
-export { NavMenuItem };
+export default NavMenuItem;
