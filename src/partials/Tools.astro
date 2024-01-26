@@ -2,31 +2,100 @@
 import { Icon } from 'astro-icon/components';
 
 const logos = [
-  {name: "Astro.js", filename: "astrojs"},
-  {name: "React", filename: "react" },
-  {name: "Wordpress", filename: "wordpress" },
-  {name: "Next.js", filename: "nextjs" },
-  {name: "Tailwind CSS", filename: "tailwindcss" },
-  {name: "TypeScript", filename: "typescript" },
-  {name: "Figma", filename: "figma" },
-  {name: "Squarespace", filename: "squarespace" },
-  {name: "Shopify", filename: "shopify" },
-  {name: "StyledComponents", filename: "styled-components" },
-  {name: "SASS", filename: "sass" },
-  {name: "Webflow", filename: "webflow" },
+  { name: 'GSAP', filename: 'gsap' }, // duplicated because you cannot see them
+  { name: 'Astro.js', filename: 'astrojs' },
+  { name: 'Tailwind CSS', filename: 'tailwindcss' },
+  { name: 'TypeScript', filename: 'typescript' },
+  { name: 'styled-components', filename: 'styled-components' },
+  { name: 'React', filename: 'react' },
+  { name: 'Wordpress', filename: 'wordpress' },
+  { name: 'Figma', filename: 'figma' },
+  { name: 'Squarespace', filename: 'squarespace' },
+  { name: 'Shopify', filename: 'shopify' },
+  { name: 'Webflow', filename: 'webflow' },
+  { name: 'Contentful', filename: 'contentful' },
+  { name: 'SASS', filename: 'sass' },
+  { name: 'Next.js', filename: 'nextjs' },
+  { name: 'GSAP', filename: 'gsap' },
+  { name: 'Astro.js', filename: 'astrojs' }, // duplicated because you cannot see them
   // {name: "Framer", filename: "framer" },
-  {name: "Contentful", filename: "contentful" },
-  {name: "GSAP", filename: "gsap" }
-]
+  // { name: 'HTML', filename: 'html' },
+  // { name: 'CSS', filename: 'css' },
+  // { name: 'JavaScript', filename: 'javascript' },
+  // { name: 'Firebase', filename: 'firebase' },
+  // { name: 'AWS', filename: 'aws' },
+  // { name: 'Google Analytics', filename: 'google-analytics' },
+];
 ---
 
-<div class='flex pb-32 w-full'>
-  <ul>
-    {logos.map( ({name, filename}) => (
-      <li>
-        <Icon name={filename} />
+<div class='flex w-full overflow-hidden pb-32'>
+  <ul id='logo-list' class='flex'>
+    {logos.map(({ name, filename }) => (
+      <li class="fadeUpInOnScroll2 mr-28 translate-y-3 text-center opacity-0">
+        <Icon name={filename} class="mb-2 size-20" />
         <p>{name}</p>
       </li>
     ))}
   </ul>
 </div>
+
+<script>
+  import { customEase } from '@/utils/Animation';
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const list = document.getElementById('logo-list');
+
+  // const listWidth = list?.clientWidth;
+  const viewportWidth = document.documentElement.clientWidth;
+  // const endX = listWidth - viewportWidth;
+  // console.log(listWidth, viewportWidth);
+
+  // fixme: this animatio can get choppy,
+  // can my first approach use rAF to animate smoothly?
+  gsap.to(list, {
+    xPercent: -100,
+    x: () => viewportWidth,
+    ease: 'none', // <-- IMPORTANT!
+    scrollTrigger: {
+      start: 'top bottom',
+      trigger: '#logo-list',
+      scrub: 0.1,
+      end: 'bottom top',
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: '#logo-list',
+    start: 'top bottom',
+    end: 'top top',
+    onEnter: () => {
+      gsap.to('.fadeUpInOnScroll2', {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 1,
+        ease: customEase,
+      });
+    },
+    onToggle: (self) => console.log('toggled, isActive:', self.isActive),
+    onUpdate: (self) => {
+      // if (list) {
+      //   const translateX = endX * self.progress.toFixed(3);
+      //   console.log(translateX);
+      //   list.style.transform = `translateX(-${translateX}px)`;
+      // }
+
+      console.log(
+        'progress:',
+        self.progress.toFixed(3),
+        'direction:',
+        self.direction,
+        'velocity',
+        self.getVelocity()
+      );
+    },
+  });
+</script>
