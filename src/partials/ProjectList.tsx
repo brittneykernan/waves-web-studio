@@ -1,5 +1,5 @@
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 // import { useEffect, useRef } from 'react';
 
 // import { customEase } from '@/utils/Animation';
