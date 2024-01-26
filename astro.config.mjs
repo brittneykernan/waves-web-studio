@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 import { astroImageTools } from 'astro-imagetools';
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,5 +24,6 @@ export default defineConfig({
     sitemap(),
     robotsTxt(),
     astroImageTools,
+    icon()
   ],
 });

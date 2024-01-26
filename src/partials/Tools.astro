@@ -1,14 +1,32 @@
 ---
-import SVG from '@/svgs/astro-icon-dark.svg';
+import { Icon } from 'astro-icon/components';
+
+const logos = [
+  {name: "Astro.js", filename: "astrojs"},
+  {name: "React", filename: "react" },
+  {name: "Wordpress", filename: "wordpress" },
+  {name: "Next.js", filename: "nextjs" },
+  {name: "Tailwind CSS", filename: "tailwindcss" },
+  {name: "TypeScript", filename: "typescript" },
+  {name: "Figma", filename: "figma" },
+  {name: "Squarespace", filename: "squarespace" },
+  {name: "Shopify", filename: "shopify" },
+  {name: "StyledComponents", filename: "styled-components" },
+  {name: "SASS", filename: "sass" },
+  {name: "Webflow", filename: "webflow" },
+  // {name: "Framer", filename: "framer" },
+  {name: "Contentful", filename: "contentful" },
+  {name: "GSAP", filename: "gsap" }
+]
 ---
 
 <div class='flex pb-32 w-full'>
   <ul>
-    <li>
-      <svg>
-        <use xlink:href={SVG} />
-      </svg>
-      <p>Astro.js</p>
-    </li>
+    {logos.map( ({name, filename}) => (
+      <li>
+        <Icon name={filename} />
+        <p>{name}</p>
+      </li>
+    ))}
   </ul>
 </div>
