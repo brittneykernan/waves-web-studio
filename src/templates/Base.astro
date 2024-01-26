@@ -2,8 +2,8 @@
 import '@fontsource/inter';
 
 import Footer from '@/partials/Footer.astro';
-import { Navbar } from '@/partials/Navbar';
-import { AppConfig } from '@/utils/AppConfig';
+import Navbar from '@/partials/Navbar';
+import AppConfig from '@/utils/AppConfig';
 
 export interface Props {
   head: {
@@ -35,7 +35,7 @@ const {
   </head>
   <body class='flex flex-col items-center bg-white'>
     <Navbar client:load />
-    <main class='mt-24 flex flex-col items-center gap-2'>
+    <main class='mt-24 flex flex-col items-center gap-2 w-11/12'>
       <slot></slot>
     </main>
     <Footer />

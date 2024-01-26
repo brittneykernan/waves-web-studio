@@ -1,4 +1,4 @@
-export const AppConfig = {
+const AppConfig = {
   site_name: 'Waves Web Studio',
   title: 'Waves Web Studio',
   description:
@@ -9,3 +9,5 @@ export const AppConfig = {
   locale_region: 'en-us',
   locale: 'en',
 };
+
+export default AppConfig;

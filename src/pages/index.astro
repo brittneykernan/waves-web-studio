@@ -2,13 +2,14 @@
 import '@/styles/tailwind.css';
 
 import projects from '@/data/projects';
-import { Hero } from '@/partials/Hero';
+import Hero from '@/partials/Hero';
 import Image from '@/partials/Image.astro';
-import { ProjectList } from '@/partials/ProjectList';
-import { RightRailMessage } from '@/partials/RightRailMessage';
+import ProjectList from '@/partials/ProjectList';
+import RightRailMessage from '@/partials/RightRailMessage';
+import Services from '@/partials/Services.astro';
 import WaveButton from '@/partials/WaveButton';
 import Base from '@/templates/Base.astro';
-import { AppConfig } from '@/utils/AppConfig';
+import AppConfig from '@/utils/AppConfig';
 
 const { description, title } = AppConfig;
 ---
@@ -18,7 +19,7 @@ const { description, title } = AppConfig;
     <h2
       class='staggered pb-10 text-xl leading-6 tracking-tighter opacity-0 md:w-[610px] md:text-3xl xl:w-[730px] xl:text-4xl'
     >
-      A Brooklyn-based studio specializing in web and app services for startups
+      A Brooklyn-based studio specializing in marketing websites for startups
       and small businesses.
     </h2>
     <WaveButton>Get In Touch</WaveButton>
@@ -48,6 +49,11 @@ const { description, title } = AppConfig;
       )
     )}
   </ProjectList>
+  <Services />
+  <!-- <div>Tech Used - logos like clients</div>
+  <div>Experience - clients / Value Prop</div>
+  <div>Team</div>
+  <div>Specialty/Differentiator</div> -->
 </Base>
 
 <script>

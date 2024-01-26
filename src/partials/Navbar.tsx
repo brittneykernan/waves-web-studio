@@ -1,9 +1,10 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 
-import { NavMenu } from '@/partials/NavMenu';
-import { NavMenuItem } from '@/partials/NavMenuItem';
-import { AppConfig } from '@/utils/AppConfig';
+import NavMenu from '@/partials/NavMenu';
+import NavMenuItem from '@/partials/NavMenuItem';
+import UnderlinedLink from '@/partials/UnderlinedLink';
+import AppConfig from '@/utils/AppConfig';
 
 const { schedulerLink } = AppConfig;
 
@@ -47,17 +48,10 @@ const Navbar = () => {
       </a>
 
       <div className="hidden w-1/3 justify-end md:flex">
-        <a
-          href={schedulerLink}
-          className="link-hover-animation persistent-underline"
-          rel="noopener nofollow"
-          target="_blank"
-        >
-          Schedule a Call
-        </a>
+        <UnderlinedLink href={schedulerLink}>Schedule a Call</UnderlinedLink>
       </div>
     </header>
   );
 };
 
-export { Navbar };
+export default Navbar;
