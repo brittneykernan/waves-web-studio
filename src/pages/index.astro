@@ -2,9 +2,12 @@
 import '@/styles/tailwind.css';
 
 import projects from '@/data/projects';
+import tools from '@/data/tools';
+
+console.log(typeof tools, typeof projects)
+
 import Hero from '@/partials/Hero';
-import Image from '@/partials/Image.astro';
-import ProjectList from '@/partials/ProjectList';
+import ProjectList from '@/partials/ProjectList.astro';
 import RightRailMessage from '@/partials/RightRailMessage';
 import Services from '@/partials/Services.astro';
 import Statement from '@/partials/Statement.astro';
@@ -26,34 +29,11 @@ const { description, title } = AppConfig;
       and small businesses.
     </h2>
     <WaveButton className='fadeUpIn'>Get In Touch</WaveButton>
-
     <RightRailMessage className="fadeUpIn">Booking projects for March 2024</RightRailMessage>
   </Hero>
-  <ProjectList client:load>
-    {projects.map(
-      ({ alt, title: pTitle, src, description: pDescription, href }, index) => (
-        <a
-          href={href}
-          title={pTitle}
-          class={`${ index === 0 ? 'fadeUpIn' : 'fadeUpInOnScroll'} flex flex-col gap-2`}
-        >
-          <div class="h-85 overflow-hidden rounded-xl">
-            <Image
-              src={src}
-              alt={alt}
-              className="transition-transform duration-700 hover:scale-110"
-            />
-          </div>
-          <div class="mb-12 mt-2 flex text-lg md:pb-20">
-            <h3 class="w-1/3">{pTitle}</h3>
-            <p class="w-1/2">{pDescription}</p>
-          </div>
-        </a>
-      )
-    )}
-  </ProjectList>
+  <ProjectList projects={projects} />
   <Services />
-  <Tools />
+  <Tools tools={tools} />
   <Statement />
   <Team />
 </Base>
@@ -64,7 +44,6 @@ const { description, title } = AppConfig;
   import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
   const scrollVisibleEls = gsap.utils.toArray('.fadeUpInOnScroll');
-  // const firstEl = scrollVisibleEls.shift();
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -82,22 +61,8 @@ const { description, title } = AppConfig;
     ease: customEase,
     delay: 1.2,
   });
-
-  // fixme: if viewport is tall enough to show first item
-  // fade it in after hero animation, otherwise
-  // fade in on scrolltrigger
-  // timeline.to(firstEl, {
-  //   opacity: 1,
-  //   y: 0,
-  //   ease: customEase,
-  //   duration: 1,
-  //   scrollTrigger: {
-  //     trigger: firstEl,
-  //   },
-  // });
-
+  
   scrollVisibleEls.forEach((el) => {
-    console.log(el)
     gsap.to(el, {
       opacity: 1,
       y: 0,

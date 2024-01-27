@@ -7,7 +7,7 @@ interface Props {
   className: string;
 }
 
-const { alt, src, className } = Astro.props;
+const { alt, src, className } : Props = Astro.props;
 
 const images = import.meta.glob('/src/images/*.{jpeg,jpg,png,gif}', {
   import: 'default',

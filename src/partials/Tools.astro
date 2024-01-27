@@ -1,31 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-const logos = [
-  { name: 'GSAP', filename: 'gsap' }, // duplicated because you cannot see them
-  { name: 'Astro.js', filename: 'astrojs' },
-  { name: 'Tailwind CSS', filename: 'tailwindcss' },
-  { name: 'TypeScript', filename: 'typescript' },
-  { name: 'styled-components', filename: 'styled-components' },
-  { name: 'React', filename: 'react' },
-  { name: 'Wordpress', filename: 'wordpress' },
-  { name: 'Figma', filename: 'figma' },
-  { name: 'Squarespace', filename: 'squarespace' },
-  { name: 'Shopify', filename: 'shopify' },
-  { name: 'Webflow', filename: 'webflow' },
-  { name: 'Contentful', filename: 'contentful' },
-  { name: 'SASS', filename: 'sass' },
-  { name: 'Next.js', filename: 'nextjs' },
-  { name: 'GSAP', filename: 'gsap' },
-  { name: 'Astro.js', filename: 'astrojs' }, // duplicated because you cannot see them
-  // {name: "Framer", filename: "framer" },
-  // { name: 'HTML', filename: 'html' },
-  // { name: 'CSS', filename: 'css' },
-  // { name: 'JavaScript', filename: 'javascript' },
-  // { name: 'Firebase', filename: 'firebase' },
-  // { name: 'AWS', filename: 'aws' },
-  // { name: 'Google Analytics', filename: 'google-analytics' },
-];
+type Props = {
+  tools: {
+    name: string,
+    filename: string,
+  }[];
+};
+
+const { tools } = Astro.props;
+
 ---
 
 <section class='w-full '>
@@ -35,7 +19,7 @@ const logos = [
   </h2> -->
   <div class='flex w-full overflow-hidden pb-32'>
     <ul id='logo-list' class='flex'>
-      {logos.map(({ name, filename }) => (
+      {tools?.map(({ name, filename }) => (
         <li class="fadeUpInOnScroll2 mr-28 translate-y-3 text-center opacity-0">
           <Icon name={filename} class="mb-2 size-20" />
           <p>{name}</p>
