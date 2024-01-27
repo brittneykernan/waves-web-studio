@@ -2,6 +2,11 @@
 @import './link-hover-animation.css';
 @import './right-rail-message.css';
 
+/* todo: move these to their own file */
 .list li {
   @apply mb-4 text-xl;
+}
+
+.fadeUpInOnScroll {
+  @apply translate-y-10 opacity-0;
 }
