@@ -25,7 +25,7 @@ const { projects: Props } = Astro.props;
       <a
         href={href}
         title={pTitle}
-        class={`${ index === 0 ? 'fadeUpIn' : 'fadeUpInOnScroll'} flex flex-col gap-2`}
+        class={`${ index === 0 ? 'fadeUpIn' : 'fadeUpInOnScroll'} customCursor flex flex-col gap-2`}
       >
         <div class="h-85 overflow-hidden rounded-xl">
           <Image
@@ -41,4 +41,117 @@ const { projects: Props } = Astro.props;
       </a>
     )
   )}
+
+  <div id="cursor" class=""><div class="cursor-content">+</div></div>
 </section>
+
+<script>
+  // register hover event handler on images
+  // const cursors = document.querySelectorAll('.customCursor')
+  // on hover create element or see if there is an existing one
+  // follow the cursor
+  // fade it in
+  // on exit, start to fade out and shedule removal 
+  // if reenter, fade back in, and cancel removal
+  // on press grow
+  // on release shrink and fade out or transform to another state like exit
+</script>
+
+<style>
+  #cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    mix-blend-mode: difference;
+    pointer-events: none;
+ }
+ .cursor-content {
+    width: 150px;
+    height: 150px;
+    background: #278fc6;
+    filter: invert(1);
+    border-radius: 50%;
+    transform: scale(0);
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+ }
+ #cursor.active .cursor-content {
+  transform: scale(1);
+ }
+ #cursor.clicked .cursor-content  {
+  transform: scale(1.3);
+ }
+</style>
+
+<script>
+  const animationDuration = 400;
+  const firstProject = document.querySelector('.customCursor');
+  const cursor = document.getElementById('cursor');
+
+  const cursorSize = cursor?.offsetWidth ?? 0;
+
+  let cursorX = 0;
+  let cursorY = 0;
+
+  let animationStartTime: number | null = null;
+  let isHovering = false;
+  let startScaleAnimation = false;
+
+  const setMousePosition = (e: MouseEvent) => { 
+    cursorX = e.clientX - (cursorSize/2);
+    cursorY = e.clientY - (cursorSize/2);
+  }
+
+  const animateCursor = (now: number) => {
+    if (startScaleAnimation) {
+      animationStartTime = now;
+      startScaleAnimation = false;
+    }
+
+    // fixme: this stinks, hard to know what's going on here
+    const timeElapsed = now - animationStartTime!;
+    const isScaling = timeElapsed <= animationDuration;
+
+    cursor!.style.transform = `translate(${cursorX}px,${cursorY}px) translate3D(0,0,0)`;
+    
+    if (isHovering || isScaling) {
+      requestAnimationFrame(animateCursor);
+    }
+  };
+
+  document.body.addEventListener('mousemove', setMousePosition);
+
+  firstProject?.addEventListener('mouseenter', (e) => {
+    startScaleAnimation = true;
+    isHovering = true;
+    cursor?.classList.add('active');
+    console.log('mouseenter')
+
+    setMousePosition(e);
+
+    requestAnimationFrame(animateCursor);
+  });
+
+  firstProject?.addEventListener('mouseleave', () => {
+    startScaleAnimation = true;
+    isHovering = false;
+    cursor?.classList.remove('active');
+
+    // fixme: not sure why this is firing a lot after mouseenter
+    console.log('mouseleave')
+  });
+
+  firstProject?.addEventListener('mousedown', () => {
+    cursor?.classList.add('clicked');
+  });
+
+  firstProject?.addEventListener('mouseup', () => {
+    setTimeout(() => {
+      cursor?.classList.remove('clicked');
+    }, 200);
+  });
+</script>

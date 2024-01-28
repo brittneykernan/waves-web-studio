@@ -33,7 +33,8 @@ const Navbar = () => {
   return (
     <header
       ref={header}
-      className="fixed z-[999] flex h-16 w-11/12
+      className="fixed z-[999] flex h-16
+      w-11/12
       flex-row-reverse items-center justify-between gap-y-3 text-lg text-white opacity-0 mix-blend-difference md:h-24 md:flex-row"
     >
       <NavMenu>
