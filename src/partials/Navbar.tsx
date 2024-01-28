@@ -20,7 +20,6 @@ const Navbar = () => {
     });
   }, []);
 
-  // MouseEventHandler<HTMLAnchorElement>
   const scrollTo = (event: MouseEvent<HTMLAnchorElement>) => {
     const { target } = event;
     const { hash } = target as HTMLAnchorElement;
