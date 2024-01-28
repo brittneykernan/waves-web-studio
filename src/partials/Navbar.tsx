@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import type { MouseEvent } from 'react';
 import { useEffect, useRef } from 'react';
 
 import NavMenu from '@/partials/NavMenu';
@@ -19,6 +20,17 @@ const Navbar = () => {
     });
   }, []);
 
+  // MouseEventHandler<HTMLAnchorElement>
+  const scrollTo = (event: MouseEvent<HTMLAnchorElement>) => {
+    const { target } = event;
+    const { hash } = target as HTMLAnchorElement;
+    const id = hash.replace('#', '');
+    const section = document.getElementById(id);
+
+    event.preventDefault();
+    section?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <header
       ref={header}
@@ -26,9 +38,15 @@ const Navbar = () => {
       flex-row-reverse items-center justify-between gap-y-3 text-lg text-white opacity-0 mix-blend-difference md:h-24 md:flex-row"
     >
       <NavMenu>
-        <NavMenuItem href="/#clients">Work</NavMenuItem>
-        <NavMenuItem href="/#services">Services</NavMenuItem>
-        <NavMenuItem href="/#team">Team</NavMenuItem>
+        <NavMenuItem onClick={scrollTo} href="/#work">
+          Work
+        </NavMenuItem>
+        <NavMenuItem onClick={scrollTo} href="/#services">
+          Services
+        </NavMenuItem>
+        <NavMenuItem onClick={scrollTo} href="/#team">
+          Team
+        </NavMenuItem>
       </NavMenu>
 
       <a href="/" title="Waves Web Studio Homepage" className="md:w-1/3">

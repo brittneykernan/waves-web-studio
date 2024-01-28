@@ -63,13 +63,13 @@ const { description, title } = AppConfig;
   });
   
   scrollVisibleEls.forEach((el) => {
-    gsap.to(el, {
+    gsap.to(el as  gsap.TweenTarget, {
       opacity: 1,
       y: 0,
       ease: customEase,
       duration: 1,
       scrollTrigger: {
-        trigger: el,
+        trigger: el as gsap.DOMTarget,
       },
     });
   });
