@@ -129,7 +129,7 @@ const { projects: Props } = Astro.props;
     startScaleAnimation = true;
     isHovering = true;
     cursor?.classList.add('active');
-    console.log('mouseenter')
+    // console.log('mouseenter')
 
     setMousePosition(e);
 
@@ -142,7 +142,7 @@ const { projects: Props } = Astro.props;
     cursor?.classList.remove('active');
 
     // fixme: not sure why this is firing a lot after mouseenter
-    console.log('mouseleave')
+    // console.log('mouseleave')
   });
 
   firstProject?.addEventListener('mousedown', () => {
