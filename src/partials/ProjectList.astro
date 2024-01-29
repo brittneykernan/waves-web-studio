@@ -42,7 +42,7 @@ const { projects: Props } = Astro.props;
     )
   )}
 
-  <div id="cursor" class=""><div class="cursor-content">+</div></div>
+  <div id="cursor" class=""><div class="cursor-content"><span>+</span></div></div>
 </section>
 
 <script>
@@ -66,6 +66,12 @@ const { projects: Props } = Astro.props;
     mix-blend-mode: difference;
     pointer-events: none;
  }
+ #cursor.active .cursor-content {
+  transform: scale(1);
+ }
+ #cursor.clicked .cursor-content  {
+  transform: scale(1.3);
+ }
  .cursor-content {
     width: 150px;
     height: 150px;
@@ -73,17 +79,15 @@ const { projects: Props } = Astro.props;
     filter: invert(1);
     border-radius: 50%;
     transform: scale(0);
-    font-size: 40px;
+    font-size: 100px;
+    font-weight: 100;
     justify-content: center;
     align-items: center;
     display: flex;
     transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
  }
- #cursor.active .cursor-content {
-  transform: scale(1);
- }
- #cursor.clicked .cursor-content  {
-  transform: scale(1.3);
+ .cursor-content span {
+  margin-top: -6px; /* to vertically align, couldn't figure out a better way */
  }
 </style>
 
