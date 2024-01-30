@@ -1,0 +1,15 @@
+---
+// todo: 
+// handle the icons you can't see - duplicate, use forumla
+---
+<div class='flex w-full overflow-hidden pb-32'>
+  <div id='logo-list' class='flex'>
+    <slot />
+  </div>
+</div>
+</section>
+
+<script>
+  import ScrollScrubCarousel from "@/scripts/ScrollScrubCarousel";
+  ScrollScrubCarousel('logo-list');
+</script>

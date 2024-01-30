@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+import ScrollScrubCarousel from '@/partials/ScrollScrubCarousel.astro';
 
 type Props = {
   tools: {
@@ -9,63 +10,16 @@ type Props = {
 };
 
 const { tools } = Astro.props;
-
 ---
 
-<section class='w-full '>
-  <!-- <h2 class='flex justify-between pb-14 text-lg'>
-    Tools of the Trade
-    <p class='mr-[-2px]'>Refreshed Often</p>
-  </h2> -->
-  <div class='flex w-full overflow-hidden pb-32'>
-    <ul id='logo-list' class='flex'>
-      {tools?.map(({ name, filename }) => (
-        <li class="fadeUpInOnScroll2 mr-28 translate-y-3 text-center opacity-0">
-          <Icon name={filename} class="mb-2 size-20" />
-          <p>{name}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
+<section class='w-full'>
+  <h2 class='flex justify-end pb-14 text-lg w-11/12 m-auto'>Tools of the Trade</h2>
+  <ScrollScrubCarousel>
+    {tools?.map(({ name, filename }) => (
+      <div class="fadeUpInOnScrollStaggered mr-14 md:mr-28 translate-y-3 text-center">
+        <Icon name={filename} class="mb-2 size-20" />
+        <p>{name}</p>
+      </div>
+    ))}
+  </ScrollScrubCarousel>
 </section>
-
-<script>
-  import { customEase } from '@/utils/Animation';
-  import gsap from 'gsap';
-  import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const list = document.getElementById('logo-list');
-
-  const viewportWidth = document.documentElement.clientWidth;
-
-  // fixme: this animatio can get choppy,
-  // can my first approach use rAF to animate smoothly?
-  gsap.to(list, {
-    xPercent: -100,
-    x: () => viewportWidth,
-    ease: 'none', // <-- IMPORTANT!
-    scrollTrigger: {
-      start: 'top bottom',
-      trigger: '#logo-list',
-      scrub: 0.5,
-      end: 'bottom top',
-    },
-  });
-
-  ScrollTrigger.create({
-    trigger: '#logo-list',
-    start: 'top bottom',
-    end: 'top top',
-    onEnter: () => {
-      gsap.to('.fadeUpInOnScroll2', {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 1,
-        ease: customEase,
-      });
-    },
-  });
-</script>

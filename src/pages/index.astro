@@ -25,11 +25,11 @@ const { description, title } = AppConfig;
     <h2
       class='staggered pb-10 text-xl leading-6 tracking-tighter opacity-0 md:w-[610px] md:text-3xl xl:w-[730px] xl:text-4xl'
     >
-      A Brooklyn-based studio specializing in marketing websites for startups
+      A Brooklyn-based studio specializing in websites for startups
       and small businesses.
     </h2>
     <WaveButton className='fadeUpIn'>Get In Touch</WaveButton>
-    <RightRailMessage className="fadeUpIn">Booking projects for March 2024</RightRailMessage>
+    <RightRailMessage className="fadeUpIn">Booking projects for March 2024 and beyond</RightRailMessage>
   </Hero>
   <ProjectList projects={projects} />
   <Services />
@@ -39,38 +39,6 @@ const { description, title } = AppConfig;
 </Base>
 
 <script>
-  import { customEase } from '@/utils/Animation';
-  import gsap from 'gsap';
-  import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-
-  const scrollVisibleEls = gsap.utils.toArray('.fadeUpInOnScroll');
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const getY = (index: number) => {
-    return 25 * (index + 1);
-  };
-
-  const timeline = gsap.timeline();
-
-  timeline.from('.fadeUpIn', {
-    opacity: 0,
-    y: getY,
-    stagger: 0.1,
-    duration: 1.5,
-    ease: customEase,
-    delay: 1.2,
-  });
-  
-  scrollVisibleEls.forEach((el) => {
-    gsap.to(el as  gsap.TweenTarget, {
-      opacity: 1,
-      y: 0,
-      ease: customEase,
-      duration: 1,
-      scrollTrigger: {
-        trigger: el as gsap.DOMTarget,
-      },
-    });
-  });
+  import AnimateIn from '@/scripts/AnimateIn';
+  AnimateIn();
 </script>

@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 import SplitType from 'split-type';
 
-import { customEase } from '@/utils/Animation';
+import { SteepEase } from '@/utils/Animation';
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -38,7 +38,7 @@ const Hero = (props: LayoutProps) => {
           yPercent: 200,
         },
         {
-          ease: customEase,
+          ease: SteepEase,
           duration: 2,
           stagger: 0.1,
           yPercent: 0,
@@ -62,7 +62,7 @@ const Hero = (props: LayoutProps) => {
 
   return (
     <section
-      className="relative flex w-full flex-col gap-2 pb-32 md:pb-48"
+      className="relative flex w-11/12 flex-col gap-2 pb-32 md:pb-48"
       ref={gsapCtx}
     >
       <h1

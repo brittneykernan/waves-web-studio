@@ -1,12 +1,12 @@
 @import './wave-button.css';
 @import './link-hover-animation.css';
 @import './right-rail-message.css';
+@import './custom-cursor.css';
 
-/* todo: move these to their own file */
 .list li {
   @apply mb-4 text-xl;
 }
 
-.fadeUpInOnScroll {
+.fadeUpInOnScroll, .fadeUpInOnScrollStaggered {
   @apply translate-y-10 opacity-0;
 }

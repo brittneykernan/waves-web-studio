@@ -1,4 +1,5 @@
 const Tools = [
+  { name: 'Next.js', filename: 'nextjs' },
   { name: 'GSAP', filename: 'gsap' }, // duplicated because you cannot see them
   { name: 'Astro.js', filename: 'astrojs' },
   { name: 'Tailwind CSS', filename: 'tailwindcss' },
