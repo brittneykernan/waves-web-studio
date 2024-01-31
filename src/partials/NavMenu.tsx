@@ -6,7 +6,9 @@ type INavMenuProps = {
 
 const NavMenu = (props: INavMenuProps) => (
   <nav className="h-0 md:w-1/3">
-    <ul className="flex w-fit translate-y-9 gap-4">{props.children}</ul>
+    <ul className="flex w-fit translate-y-2 gap-4 md:h-6 md:translate-y-9">
+      {props.children}
+    </ul>
   </nav>
 );
 

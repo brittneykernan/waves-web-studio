@@ -62,7 +62,7 @@ const Hero = (props: LayoutProps) => {
 
   return (
     <section
-      className="relative flex w-11/12 flex-col gap-2 pb-32 md:pb-48"
+      className="relative flex w-11/12 flex-col gap-2 md:pb-48"
       ref={gsapCtx}
     >
       <h1
@@ -70,7 +70,7 @@ const Hero = (props: LayoutProps) => {
         ref={h1}
         className="pb-2 text-4xl font-bold uppercase tracking-tighter md:text-7xl xl:pb-6 xl:text-8xl"
       >
-        Web Design & Development Studio
+        Web Design & Development
       </h1>
       {children}
     </section>

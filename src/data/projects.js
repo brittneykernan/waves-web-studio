@@ -6,6 +6,7 @@ const Projects = [
     alt: 'test',
     description:
       'Fitness App for easily tracking and celebrating miles walked in a day',
+    category: 'iOS',
   },
   {
     href: '#',
@@ -13,6 +14,7 @@ const Projects = [
     src: 'waves-2.jpg',
     alt: 'test',
     description: 'Travel Blog for somewhat-budget-concious bougie millenials',
+    category: 'Astro.js',
   },
 ];
 

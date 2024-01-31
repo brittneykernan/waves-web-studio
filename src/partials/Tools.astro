@@ -13,7 +13,7 @@ const { tools } = Astro.props;
 ---
 
 <section class='w-full'>
-  <h2 class='flex justify-end pb-14 text-lg w-11/12 m-auto'>Tools of the Trade</h2>
+  <h2 class='flex justify-end pb-4 md:pb-14 text-lg w-11/12 m-auto'>Tools of the Trade</h2>
   <ScrollScrubCarousel>
     {tools?.map(({ name, filename }) => (
       <div class="fadeUpInOnScrollStaggered mr-14 md:mr-28 translate-y-3 text-center">

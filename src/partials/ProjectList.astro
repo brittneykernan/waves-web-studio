@@ -16,11 +16,11 @@ type Props = {
 const { projects: Props } = Astro.props;
 ---
 
-<section id="work" class="flex flex-col w-11/12 pt-24 pb-32 md:pb-48">
+<section id="work" class="flex flex-col w-11/12 pt-24 md:pb-48">
   <h2 class="fadeUpIn flex justify-between pb-4 text-lg">
     Recent Work<p class="mr-[-2px]">↓</p>
   </h2>
-  <div class="flex flex-col gap-32">
+  <div class="flex flex-col gap-14 md:gap-32">
     {projects.map(
       ( props, index: number) => (
         <Project {...props} className={`${ index === 0 ? 'fadeUpIn' : 'fadeUpInOnScroll'}`} />

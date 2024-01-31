@@ -12,7 +12,7 @@ const NavMenuItem = (props: INavMenuItemProps) => (
     <a
       href={props.href}
       target={props.target || '_self'}
-      className="link-hover-animation"
+      className="link-hover-animation h-10 leading-10"
       onClick={props.onClick}
     >
       {props.children}
