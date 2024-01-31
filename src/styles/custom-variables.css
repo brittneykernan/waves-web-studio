@@ -1,0 +1,4 @@
+:root {
+  --copyright-height: theme(spacing.32);
+  --navbar-height: theme(spacing.24);
+}

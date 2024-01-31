@@ -1,0 +1,5 @@
+footer > div:first-child {
+  @media (min-width: theme('screens.md')) {
+    min-height: calc(100vh - var(--copyright-height) - var(--navbar-height));
+  }
+}

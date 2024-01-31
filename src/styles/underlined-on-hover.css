@@ -1,9 +1,9 @@
-.link-hover-animation {
+.underlined-on-hover {
   display: inline-block;
   position: relative;
   text-decoration: none;
 }
-.link-hover-animation:after {
+.underlined-on-hover:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -16,19 +16,19 @@
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-header .link-hover-animation:after {
+header .underlined-on-hover:after {
   filter: invert(1); /* necessary to undo inverse colors applied by mix-blend-difference in header */
   bottom: 5px;
 }
-.link-hover-animation:hover::after {
+.underlined-on-hover:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-.link-hover-animation.persistent-underline:after {
+.underlined-on-hover.persistent-underline:after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-.link-hover-animation.persistent-underline:hover::after {
+.underlined-on-hover.persistent-underline:hover::after {
   transform: scaleX(0);
   transform-origin: bottom right;
 }

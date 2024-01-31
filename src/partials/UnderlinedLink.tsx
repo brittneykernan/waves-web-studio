@@ -13,7 +13,7 @@ const UnderlinedLink = ({
 }: ILinkProps) => (
   <a
     href={href}
-    className={`link-hover-animation persistent-underline ${className}`}
+    className={`underlined-on-hover persistent-underline ${className}`}
     rel="noopener nofollow"
     target={target}
   >

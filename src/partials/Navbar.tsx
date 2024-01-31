@@ -54,7 +54,7 @@ const Navbar = () => {
           id="logo"
           href="/#top"
           title="Waves Web Studio Homepage"
-          className="mx-auto flex h-10 w-[105px] translate-y-3 md:w-auto md:translate-y-9"
+          className="mx-auto flex h-10 w-[105px] translate-y-[9px] md:w-auto md:translate-y-7"
           onClick={scrollTo}
         >
           <svg
@@ -74,7 +74,7 @@ const Navbar = () => {
       <div className="hidden h-0 w-1/3 justify-end md:flex">
         <UnderlinedLink
           href={schedulerLink}
-          className="size-fit h-10 translate-y-9 leading-10"
+          className="size-fit h-10 translate-y-7 leading-10"
         >
           Schedule a Call
         </UnderlinedLink>

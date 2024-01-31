@@ -1,12 +1,8 @@
 @import './wave-button.css';
-@import './link-hover-animation.css';
+@import './underlined-on-hover.css';
 @import './right-rail-message.css';
 @import './custom-cursor.css';
-
-/* todo: move to custom-base.css */
-body {
-  font-family: 'Inter', sans-serif;
-}
+@import './footer.css';
 
 .list li {
   @apply md:mb-4 md:text-xl;
