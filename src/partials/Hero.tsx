@@ -8,6 +8,7 @@ export interface LayoutProps {
   children: React.ReactNode;
 }
 
+// todo: should we refactor this to be more SRP adherent?
 const Hero = (props: LayoutProps) => {
   const { children } = props;
   const gsapCtx = useRef<HTMLElement>(null); // create a ref for the root level element (for scoping)
@@ -62,15 +63,15 @@ const Hero = (props: LayoutProps) => {
 
   return (
     <section
-      className="relative flex w-11/12 flex-col gap-2 md:pb-48"
+      className="relative flex w-11/12 flex-col gap-2 pb-24 md:pb-48 md:pt-12 2xl:pt-0"
       ref={gsapCtx}
     >
       <h1
         id="heading"
         ref={h1}
-        className="pb-2 text-4xl font-bold uppercase tracking-tighter md:text-7xl xl:pb-6 xl:text-8xl"
+        className="pb-2 text-4xl font-bold uppercase tracking-tighter md:text-7xl xl:w-2/3 xl:pb-6 xl:text-8xl 2xl:w-full 2xl:text-9xl"
       >
-        Web Design & Development
+        Website Design & Development
       </h1>
       {children}
     </section>

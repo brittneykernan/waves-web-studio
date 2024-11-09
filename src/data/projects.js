@@ -11,8 +11,8 @@ const Projects = [
   {
     href: '#',
     title: 'Now Departing NY',
-    src: 'waves-2.jpg',
-    alt: 'test',
+    src: 'now-departing-home.jpg',
+    alt: 'Laptop on desk with nowdeparting.nyc in browser',
     description: 'Travel Blog for somewhat-budget-concious bougie millenials',
     category: 'Astro.js',
   },

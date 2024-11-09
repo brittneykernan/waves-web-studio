@@ -5,23 +5,29 @@ import imageSrc from '@/images/web-services.jpg';
 import UnderlinedLink from '@/partials/UnderlinedLink';
 ---
 
-<div id="services" class='flex pb-48 w-11/12'>
-  <div class="hidden md:flex justify-center w-1/2">
-    <Image src={imageSrc} alt="Web Development Services" class="rounded-xl h-auto w-10/12 xl:w-3/4 xl:m-auto fadeUpInOnScroll" />
+<div id='services' class='flex w-11/12 pb-32 md:pb-48'>
+  <div class='hidden w-1/2 justify-center md:flex'>
+    <Image
+      src={imageSrc}
+      alt='Web Development Services'
+      class='fadeUpInOnScroll h-auto w-10/12 rounded-xl xl:m-auto xl:w-3/4'
+    />
   </div>
-  <div class="self-center grow">
-    <h3 class='pb-4 md:pb-12 text-4xl font-bold uppercase tracking-tighter md:text-7xl xl:text-8xl fadeUpInOnScroll'>
+  <div class='grow self-center'>
+    <h3
+      class='fadeUpInOnScroll pb-4 text-4xl font-bold uppercase tracking-tighter md:pb-12 md:text-7xl xl:text-8xl'
+    >
       Services
     </h3>
-    <div class="flex fadeUpInOnScroll text-lg">
-      <ul class="list mr-6 w-1/2 md:width-auto lg:mr-0 lg:w-1/2">
-        <li>Marketig Websites</li>
+    <div class='fadeUpInOnScroll flex text-lg'>
+      <ul class='list mr-6 w-1/2 md:w-auto lg:mr-0 lg:w-1/2'>
+        <li>Marketing Websites</li>
         <li>Landing Pages</li>
         <li>Web Apps</li>
-        <li>Front-End Web Development</li>
+        <li>SEO</li>
         <li>Prototyping</li>
       </ul>
-      <ul class="list">
+      <ul class='list'>
         <li>Product Design</li>
         <li>Motion Design</li>
         <li>Illustration</li>
@@ -29,6 +35,14 @@ import UnderlinedLink from '@/partials/UnderlinedLink';
         <li>Branding</li>
       </ul>
     </div>
-    <p class="text-xl leading-6 flex flex-col md:block md:text-2xl mt-6 lg:mt-14 xl:mt-28 fadeUpInOnScroll">Don't see your need here? <span><UnderlinedLink href="mailto:wave-hello@wavesweb.studio">Ask us</UnderlinedLink> about it.</span></p>
+    <p
+      class='fadeUpInOnScroll mt-6 flex flex-col text-xl leading-6 md:block md:text-2xl lg:mt-14 xl:mt-28'
+    >
+      Don't see your need here? <span
+        ><UnderlinedLink href='mailto:wave-hello@wavesweb.studio'
+          >Ask us
+        </UnderlinedLink> about it.
+      </span>
+    </p>
   </div>
 </div>

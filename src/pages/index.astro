@@ -3,18 +3,15 @@ import '@/styles/tailwind.css';
 
 import projects from '@/data/projects';
 import tools from '@/data/tools';
-
-console.log(typeof tools, typeof projects)
-
 import Hero from '@/partials/Hero';
 import ProjectList from '@/partials/ProjectList.astro';
 import RightRailMessage from '@/partials/RightRailMessage';
 import Services from '@/partials/Services.astro';
 import Statement from '@/partials/Statement.astro';
+import Team from '@/partials/Team.astro';
 import Tools from '@/partials/Tools.astro';
 import WaveButton from '@/partials/WaveButton';
 import Base from '@/templates/Base.astro';
-import Team from '@/partials/Team.astro';
 import AppConfig from '@/utils/AppConfig';
 
 const { description, title } = AppConfig;
@@ -23,19 +20,42 @@ const { description, title } = AppConfig;
 <Base head={{ title, description }}>
   <Hero client:load>
     <h2
-      class='staggered pb-10 text-xl leading-6 tracking-tighter opacity-0 md:w-[610px] md:text-3xl xl:w-[730px] xl:text-4xl'
+      class='staggered pb-10 text-xl leading-6 tracking-tighter opacity-0 md:w-[610px] md:text-3xl xl:w-[730px] xl:text-4xl 2xl:w-[795px] 2xl:text-5xl'
     >
-      A Brooklyn-based studio specializing in modern websites for startups
-      and small-to-medium businesses.
+      A Brooklyn-based studio specializing in modern websites for startups and
+      small-to-medium businesses.
     </h2>
     <WaveButton className='fadeUpIn'>Get In Touch</WaveButton>
-    <RightRailMessage className="fadeUpIn">Booking projects for March 2024 and beyond</RightRailMessage>
+    <RightRailMessage className='fadeUpIn'
+      >Currently Fully Booked
+    </RightRailMessage>
   </Hero>
   <ProjectList projects={projects} />
   <Services />
   <Tools tools={tools} />
-  <Statement />
+  <Statement title='Who You&apos;ll Meet'>
+    <p class='fadeUpInOnScroll mb-10'>
+      Need more than Fiverr but less than an agency? Waves fills that gap.
+    </p>
+    <p class='fadeUpInOnScroll'>
+      We are an experienced developer and designer pair with a network of
+      trustworthy agency veterans. We'll assemble a lean specialized team to
+      achieve your website goals.
+    </p>
+  </Statement>
   <Team />
+  <Statement title='What You&apos;ll Get'>
+    <p class='fadeUpInOnScroll mb-10'>
+      Our work uses proven technology and design practices. Your new website
+      will be fast, responsive, secure and easy to maintain. Your website's
+      design will reflect your brand and its values and stand out among
+      competitors.
+    </p>
+    <p class='fadeUpInOnScroll'>
+      Already have a website? We specialize in strategic enhancements and bug
+      fixes.
+    </p>
+  </Statement>
 </Base>
 
 <script>

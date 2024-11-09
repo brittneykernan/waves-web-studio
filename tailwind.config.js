@@ -7,7 +7,7 @@ module.exports = {
         // teal: '#0087ca',
       },
       height: {
-        85: '85vh',
+        75: '75vh',
       },
     },
   },
