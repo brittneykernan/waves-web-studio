@@ -4,8 +4,10 @@
 @import './custom-cursor.css';
 @import './footer.css';
 
-.list li {
-  @apply md:mb-4 md:text-xl;
+.list {
+  & li {
+    @apply md:mb-4 md:text-xl;
+  }
 }
 
 .fadeUpInOnScroll, .fadeUpInOnScrollStaggered {

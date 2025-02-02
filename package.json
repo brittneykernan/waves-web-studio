@@ -1,6 +1,6 @@
 {
-  "name": "astro-boilerplate",
-  "version": "1.0.0",
+  "name": "waves-web-studio-website",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -64,6 +64,5 @@
   },
   "volta": {
     "node": "16.15.1"
-  },
-  "author": "Ixartz (https://github.com/ixartz)"
+  }
 }
